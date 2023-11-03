@@ -174,9 +174,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311011124371_AddUsersTable.cs" />
-    <Compile Include="Migrations\202311011124371_AddUsersTable.designer.cs">
-      <DependentUpon>202311011124371_AddUsersTable.cs</DependentUpon>
+    <Compile Include="Migrations\202311020543489_AddUsersTable.cs" />
+    <Compile Include="Migrations\202311020543489_AddUsersTable.designer.cs">
+      <DependentUpon>202311020543489_AddUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311021003420_DropProductTable.cs" />
+    <Compile Include="Migrations\202311021003420_DropProductTable.designer.cs">
+      <DependentUpon>202311021003420_DropProductTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311021008550_AddProductWatchListProductTable.cs" />
+    <Compile Include="Migrations\202311021008550_AddProductWatchListProductTable.designer.cs">
+      <DependentUpon>202311021008550_AddProductWatchListProductTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311021123112_update-database.cs" />
+    <Compile Include="Migrations\202311021123112_update-database.designer.cs">
+      <DependentUpon>202311021123112_update-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
@@ -271,8 +283,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311011124371_AddUsersTable.resx">
-      <DependentUpon>202311011124371_AddUsersTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311020543489_AddUsersTable.resx">
+      <DependentUpon>202311020543489_AddUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311021003420_DropProductTable.resx">
+      <DependentUpon>202311021003420_DropProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311021008550_AddProductWatchListProductTable.resx">
+      <DependentUpon>202311021008550_AddProductWatchListProductTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311021123112_update-database.resx">
+      <DependentUpon>202311021123112_update-database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

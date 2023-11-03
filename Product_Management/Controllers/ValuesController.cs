@@ -12,9 +12,9 @@ namespace Product_Management.Controllers
     {
         Users_context context = new Users_context();
         // GET api/values
-        public IEnumerable<Users> Get()
+        public IEnumerable<Product> Get()
         {
-            return context.Users.ToList();
+            return context.Product.ToList();
         }
 
         // GET api/values/5
@@ -23,25 +23,13 @@ namespace Product_Management.Controllers
             return "value";
         }
 
-
-        /*         [HttpPost]
-               public HttpResponseMessage Post(Users user)
-               {
-                   context.Users.Add(user);
-                   context.SaveChanges();
-                   return Request.CreateResponse(HttpStatusCode.Created, user.UserId);
-               }*/
         [HttpPost]
-        public HttpResponseMessage Post(Users Users)
+        public HttpResponseMessage Post(ProductWatchListShareLogs ProductWatchListShareLogs)
         {
-            context.Users.Add(Users);
+            context.ProductWatchListShareLogs.Add(ProductWatchListShareLogs);
             context.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.Created, Users.UserId);
-        }
-        // POST api/values
-        /*   public void Post([FromBody] string value)
-           {
-           }*/
+            return Request.CreateResponse(HttpStatusCode.Created, ProductWatchListShareLogs.ProductWatchListShareLogId);
+        }     
 
         // PUT api/values/5
         public void Put(int id, [FromBody] string value)

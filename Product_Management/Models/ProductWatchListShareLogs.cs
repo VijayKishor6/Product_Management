@@ -10,12 +10,16 @@ namespace Product_Management.Models
     public class ProductWatchListShareLogs
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ProductWatchListShareLogId { get; set; }
+     
         public Guid ProductWatchListId { get; set; }
         [Required]
         public string Email { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ModifiedBy { get; set; }
         public DateTime ModifiedAt { get; set; }
         [Required]

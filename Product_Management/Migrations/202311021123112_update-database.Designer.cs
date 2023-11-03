@@ -7,13 +7,13 @@ namespace Product_Management.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddUsersTable : IMigrationMetadata
+    public sealed partial class updatedatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUsersTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311011124371_AddUsersTable"; }
+            get { return "202311021123112_update-database"; }
         }
         
         string IMigrationMetadata.Source

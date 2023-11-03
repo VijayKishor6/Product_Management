@@ -27,9 +27,9 @@
                 "dbo.ProductWatchListProducts",
                 c => new
                     {
-                        ProductWatchListProductId = c.Guid(nullable: false),
-                        ProductId = c.Guid(nullable: false),
-                        ProductWatchListId = c.Guid(nullable: false),
+                        ProductWatchListProductId = c.Guid(nullable: false, identity: true),
+                        ProductId = c.Guid(nullable: false, identity: true),
+                        ProductWatchListId = c.Guid(nullable: false, identity: true),
                     })
                 .PrimaryKey(t => t.ProductWatchListProductId)
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
@@ -55,12 +55,12 @@
                 "dbo.ProductWatchListShareLogs",
                 c => new
                     {
-                        ProductWatchListShareLogId = c.Guid(nullable: false),
-                        ProductWatchListId = c.Guid(nullable: false),
+                        ProductWatchListShareLogId = c.Guid(nullable: false, identity: true),
+                        ProductWatchListId = c.Guid(nullable: false, identity: true),
                         Email = c.String(nullable: false),
-                        CreatedBy = c.Guid(nullable: false),
+                        CreatedBy = c.Guid(nullable: false, identity: true),
                         CreatedAt = c.DateTime(nullable: false),
-                        ModifiedBy = c.Guid(nullable: false),
+                        ModifiedBy = c.Guid(nullable: false, identity: true),
                         ModifiedAt = c.DateTime(nullable: false),
                         Status = c.Short(nullable: false),
                     })

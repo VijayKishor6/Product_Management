@@ -10,10 +10,10 @@ namespace Product_Management.Models
     public class ProductWatchListProducts
     {
         [Key]
-        public Guid ProductWatchListProductId { get; set; }
-     
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid ProductWatchListProductId { get; set; }      
+
         public Guid ProductId { get; set; }
-    
         public Guid ProductWatchListId { get; set; }
 
         [ForeignKey("ProductWatchListId")]
