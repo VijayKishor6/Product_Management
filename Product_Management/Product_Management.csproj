@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202311021123112_update-database.designer.cs">
       <DependentUpon>202311021123112_update-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311060705257_AddWatchListsTable.cs" />
+    <Compile Include="Migrations\202311060705257_AddWatchListsTable.designer.cs">
+      <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWatchLists.cs" />
@@ -197,6 +201,7 @@
     <Compile Include="Models\ProductWatchListShareLogs.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Users_context.cs" />
+    <Compile Include="Models\WatchLists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311021123112_update-database.resx">
       <DependentUpon>202311021123112_update-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311060705257_AddWatchListsTable.resx">
+      <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

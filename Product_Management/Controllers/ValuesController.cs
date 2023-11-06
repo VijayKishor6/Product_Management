@@ -24,11 +24,11 @@ namespace Product_Management.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(ProductWatchListShareLogs ProductWatchListShareLogs)
+        public HttpResponseMessage Post(WatchLists WatchLists)
         {
-            context.ProductWatchListShareLogs.Add(ProductWatchListShareLogs);
+            context.WatchLists.Add(WatchLists);
             context.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.Created, ProductWatchListShareLogs.ProductWatchListShareLogId);
+            return Request.CreateResponse(HttpStatusCode.Created, WatchLists.Id);
         }     
 
         // PUT api/values/5
