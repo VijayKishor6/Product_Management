@@ -259,11 +259,16 @@
     <Compile Include="Migrations\202311060705257_AddWatchListsTable.designer.cs">
       <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311151046537_AddUsercredentialsTable.cs" />
+    <Compile Include="Migrations\202311151046537_AddUsercredentialsTable.designer.cs">
+      <DependentUpon>202311151046537_AddUsercredentialsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWatchLists.cs" />
     <Compile Include="Models\ProductWatchListProducts.cs" />
     <Compile Include="Models\ProductWatchListShareLogs.cs" />
+    <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Users_context.cs" />
     <Compile Include="Models\WatchLists.cs" />
@@ -373,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311060705257_AddWatchListsTable.resx">
       <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311151046537_AddUsercredentialsTable.resx">
+      <DependentUpon>202311151046537_AddUsercredentialsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

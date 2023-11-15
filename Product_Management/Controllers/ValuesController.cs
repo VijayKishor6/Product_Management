@@ -15,10 +15,11 @@ using Microsoft.Owin.Security;
 
 namespace Product_Management.Controllers
 {
+    [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
         [HttpGet]
-        public Object GetToken()
+        public Object GetToken(string name)
         {
             string key = "vvvvvvvvvvvvvvvvvvvvvvvvviiiiiiiiiiiiiiijjjjjjjjjjaaaaaaaaayyyyyyyyy"; // Secret key with sufficient length    
             var issuer = "http://mysite.com";  // Normally this will be your site URL    
@@ -27,10 +28,11 @@ namespace Product_Management.Controllers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             // Create a List of Claims
-            var permClaims = new List<Claim>();
+            var permClaims = GetUserClaimsFromDatabase(name);
+           /* var permClaims = new List<Claim>();
             permClaims.Add(new Claim("username", "vijaykishor06")); // Replace with the actual username
             permClaims.Add(new Claim("password", "unnakuyennapa")); // Replace with the actual password
-
+*/
             // Create Security Token object by giving required parameters    
             var token = new JwtSecurityToken(
                 issuer: issuer,
@@ -43,42 +45,50 @@ namespace Product_Management.Controllers
             return new { data = jwt_token };
         }
 
-        [Authorize]
-        [HttpPost]
-        public IHttpActionResult GetName1()
+        private List<Claim> GetUserClaimsFromDatabase(string username)
         {
-            if (User.Identity.IsAuthenticated)
+            using(var context=new Users_context())
             {
-                var identity = User.Identity as ClaimsIdentity;
-                if (identity != null)
+                var user = context.UserCredentials.FirstOrDefault(u => u.username == username);
+                if(user != null)
                 {
-                    IEnumerable<Claim> claims = identity.Claims;
-                    // You can access claims here
+                    return new List<Claim>
+                    {
+                        new Claim("username",user.username),
+                        new Claim("password",user.password)
+                    };
                 }
-                return Ok("Valid");
-            }
-            else
-            {
-                return Unauthorized();
+                return null;
             }
         }
 
-        [Authorize]
+
         [HttpPost]
-        public Object GetName2()
+        [Route("validatecredentials")]
+        public IHttpActionResult ValidateCredentials([FromBody] UserCredentials model)
         {
-            var identity = User.Identity as ClaimsIdentity;
-            if (identity != null)
-            {
-                IEnumerable<Claim> claims = identity.Claims;
-                var username= claims.Where(p => p.Type == "username").FirstOrDefault()?.Value;
-                return new
-                {
-                    data = username
-                };
 
+            if (model == null || string.IsNullOrWhiteSpace(model.username) || string.IsNullOrWhiteSpace(model.password))
+            {
+                return BadRequest("Invalid input");
             }
-            return null;
+
+            // Validate the credentials using your logic
+            var isValid = ValidateUserCredentials(model.username, model.password);
+            if (isValid)
+            {
+                return Ok("Credentials are valid");
+            }
+            return BadRequest("Invalid credentials");
         }
+
+        private bool ValidateUserCredentials(string username, string password)
+        {
+            var tokenUsernameClaim = ((ClaimsIdentity)User.Identity).FindFirst("username")?.Value;
+            var tokenPasswordClaim = ((ClaimsIdentity)User.Identity).FindFirst("password")?.Value;
+            return username == tokenUsernameClaim && tokenPasswordClaim == password;
+        }       
     }
 }
+
+
