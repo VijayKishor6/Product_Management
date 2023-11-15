@@ -5,40 +5,80 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.Owin.Security.Jwt;
+using Microsoft.Owin.Security;
+
 
 namespace Product_Management.Controllers
 {
     public class ValuesController : ApiController
     {
-        Users_context context = new Users_context();
-        // GET api/values
-        public IEnumerable<Product> Get()
+        [HttpGet]
+        public Object GetToken()
         {
-            return context.Product.ToList();
+            string key = "vvvvvvvvvvvvvvvvvvvvvvvvviiiiiiiiiiiiiiijjjjjjjjjjaaaaaaaaayyyyyyyyy"; // Secret key with sufficient length    
+            var issuer = "http://mysite.com";  // Normally this will be your site URL    
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Create a List of Claims
+            var permClaims = new List<Claim>();
+            permClaims.Add(new Claim("username", "vijaykishor06")); // Replace with the actual username
+            permClaims.Add(new Claim("password", "unnakuyennapa")); // Replace with the actual password
+
+            // Create Security Token object by giving required parameters    
+            var token = new JwtSecurityToken(
+                issuer: issuer,
+                audience: issuer, // You can set it to the same value as issuer or your app's client ID
+                claims: permClaims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: credentials);
+
+            var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
+            return new { data = jwt_token };
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+        [Authorize]
         [HttpPost]
-        public HttpResponseMessage Post(WatchLists WatchLists)
+        public IHttpActionResult GetName1()
         {
-            context.WatchLists.Add(WatchLists);
-            context.SaveChanges();
-            return Request.CreateResponse(HttpStatusCode.Created, WatchLists.Id);
-        }     
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
-        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as ClaimsIdentity;
+                if (identity != null)
+                {
+                    IEnumerable<Claim> claims = identity.Claims;
+                    // You can access claims here
+                }
+                return Ok("Valid");
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
+        [Authorize]
+        [HttpPost]
+        public Object GetName2()
         {
+            var identity = User.Identity as ClaimsIdentity;
+            if (identity != null)
+            {
+                IEnumerable<Claim> claims = identity.Claims;
+                var username= claims.Where(p => p.Type == "username").FirstOrDefault()?.Value;
+                return new
+                {
+                    data = username
+                };
+
+            }
+            return null;
         }
     }
 }
