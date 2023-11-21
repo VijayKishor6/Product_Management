@@ -38,7 +38,7 @@ namespace Product_Management.Controllers
             return Request.CreateResponse(HttpStatusCode.Created, ProductWatchListShareLogs.ProductWatchListShareLogId);
         }
 
-
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         [Route("api/productwatchlistsahrelogs/productwatchlistsahrelogs")]
         public IHttpActionResult GetProductWatchListShareLogs()

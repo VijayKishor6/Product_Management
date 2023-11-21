@@ -259,16 +259,30 @@
     <Compile Include="Migrations\202311060705257_AddWatchListsTable.designer.cs">
       <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311151046537_AddUsercredentialsTable.cs" />
-    <Compile Include="Migrations\202311151046537_AddUsercredentialsTable.designer.cs">
-      <DependentUpon>202311151046537_AddUsercredentialsTable.cs</DependentUpon>
+    <Compile Include="Migrations\202311170555089_AddUsercredentialsTable.cs" />
+    <Compile Include="Migrations\202311170555089_AddUsercredentialsTable.designer.cs">
+      <DependentUpon>202311170555089_AddUsercredentialsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311170923039_AddUsercredentialRoleColumn.cs" />
+    <Compile Include="Migrations\202311170923039_AddUsercredentialRoleColumn.designer.cs">
+      <DependentUpon>202311170923039_AddUsercredentialRoleColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311180542137_AddRoleColumn.cs" />
+    <Compile Include="Migrations\202311180542137_AddRoleColumn.designer.cs">
+      <DependentUpon>202311180542137_AddRoleColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311200655249_AddRefreshTokenTable.cs" />
+    <Compile Include="Migrations\202311200655249_AddRefreshTokenTable.designer.cs">
+      <DependentUpon>202311200655249_AddRefreshTokenTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWatchLists.cs" />
     <Compile Include="Models\ProductWatchListProducts.cs" />
     <Compile Include="Models\ProductWatchListShareLogs.cs" />
+    <Compile Include="Models\RefreshToken.cs" />
     <Compile Include="Models\UserCredentials.cs" />
+    <Compile Include="Models\UserInput.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Users_context.cs" />
     <Compile Include="Models\WatchLists.cs" />
@@ -330,6 +344,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Api\" />
+    <Folder Include="Views\demo1\" />
+    <Folder Include="Views\Demo\" />
     <Folder Include="Views\ProductWatchList\" />
     <Folder Include="Views\ShareLogs\" />
     <Folder Include="Views\WatchList\" />
@@ -379,8 +395,17 @@
     <EmbeddedResource Include="Migrations\202311060705257_AddWatchListsTable.resx">
       <DependentUpon>202311060705257_AddWatchListsTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202311151046537_AddUsercredentialsTable.resx">
-      <DependentUpon>202311151046537_AddUsercredentialsTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202311170555089_AddUsercredentialsTable.resx">
+      <DependentUpon>202311170555089_AddUsercredentialsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311170923039_AddUsercredentialRoleColumn.resx">
+      <DependentUpon>202311170923039_AddUsercredentialRoleColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311180542137_AddRoleColumn.resx">
+      <DependentUpon>202311180542137_AddRoleColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311200655249_AddRefreshTokenTable.resx">
+      <DependentUpon>202311200655249_AddRefreshTokenTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

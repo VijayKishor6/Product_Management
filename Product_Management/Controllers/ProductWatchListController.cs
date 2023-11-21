@@ -13,7 +13,7 @@ namespace Product_Management.Controllers
     public class ProductWatchListController : ApiController
     {
         Users_context context = new Users_context();
-
+        [Authorize(Roles="User")]
         [HttpGet]
         [Route("api/productwatchlist/productwatchlists")]
         public IHttpActionResult GetProductWatchLists()

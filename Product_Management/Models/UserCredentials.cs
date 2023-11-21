@@ -12,5 +12,15 @@ namespace Product_Management.Models
         public int id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+       // public string token { get; set; }
+
+        public RoleEnum role { get; set; }
     }
+
+}
+
+public enum RoleEnum
+{
+    Admin=1,
+    User=2     
 }

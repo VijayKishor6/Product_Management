@@ -19,6 +19,7 @@ namespace Product_Management.Models
         public DbSet<ProductWatchListShareLogs> ProductWatchListShareLogs { get; set; }
         public DbSet<WatchLists> WatchLists { get; set; }
         public DbSet<UserCredentials> UserCredentials { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
     }
 }

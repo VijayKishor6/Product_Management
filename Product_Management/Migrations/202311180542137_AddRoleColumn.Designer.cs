@@ -7,13 +7,13 @@ namespace Product_Management.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddUsercredentialsTable : IMigrationMetadata
+    public sealed partial class AddRoleColumn : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUsercredentialsTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRoleColumn));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311151046537_AddUsercredentialsTable"; }
+            get { return "202311180542137_AddRoleColumn"; }
         }
         
         string IMigrationMetadata.Source

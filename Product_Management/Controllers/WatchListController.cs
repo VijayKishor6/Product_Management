@@ -43,6 +43,7 @@ namespace Product_Management.Controllers
             return Request.CreateResponse(HttpStatusCode.Created, WatchLists.Id);
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         [Route("api/watchlist/watchlists")]
         public IHttpActionResult GetWatchLists()
